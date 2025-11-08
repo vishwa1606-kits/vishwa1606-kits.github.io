@@ -5,224 +5,353 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>CH. Vishwa Sai — Portfolio</title>
 <meta name="description" content="Portfolio of CH. Vishwa Sai — B.Tech CSE (AI & ML). About, Experience, Education, Accomplishments and Contact." />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fbf6f2;
+  --page-bg:#fbf6f2;
   --card:#ffffff;
   --muted:#6d6a67;
   --text:#121212;
-  --accent:#e1b54b;
+  --accent:#d9b24e;
+  --accent-strong:#e1b54b;
+  --soft-border:#efe6e0;
   --radius:18px;
-  --shadow:0 20px 40px rgba(18,18,20,0.06);
+  --card-pad:24px;
+  --shadow: 0 20px 40px rgba(18,18,20,0.06);
   --max-width:980px;
+  --left-col:150px;
+  --fab-size:74px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--text);background:var(--page-bg);-webkit-font-smoothing:antialiased}
 .container{max-width:var(--max-width);margin:0 auto;padding:20px}
 
-/* Header */
-.header{position:sticky;top:0;background:rgba(251,246,242,0.9);backdrop-filter:blur(6px);z-index:99;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
-.header-inner{display:flex;justify-content:center;gap:12px;padding:12px 20px}
-.nav a{font-weight:600;font-size:0.96rem;color:var(--text);text-decoration:none;padding:6px 10px;border-radius:10px}
+/* header nav */
+.header{position:sticky;top:0;z-index:80;background:linear-gradient(180deg, rgba(251,246,243,0.98), rgba(251,246,243,0.92));backdrop-filter: blur(4px);border-bottom:1px solid rgba(0,0,0,0.02)}
+.header-inner{max-width:var(--max-width);margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.nav a{font-weight:600;padding:8px 12px;border-radius:10px;color:var(--text);font-size:0.95rem}
 .nav a:hover{background:rgba(0,0,0,0.04)}
 
-/* Cards */
-.card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin:20px 0;animation:fadeUp 0.7s ease both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-
-/* Profile */
+/* Card base */
+.card{background:var(--card);border-radius:var(--radius);padding:var(--card-pad);box-shadow:var(--shadow);margin:20px 0;overflow:hidden}
 .profile{display:flex;gap:20px;align-items:center}
-.profile-img{width:110px;height:110px;border-radius:50%;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,0.07)}
-.title{font-size:1.4rem;font-weight:800}
-.subtitle{color:var(--muted);font-size:0.95rem}
+.profile-img{width:110px;height:110px;border-radius:999px;object-fit:cover;flex:0 0 110px;box-shadow:0 16px 36px rgba(0,0,0,0.08)}
+.title{font-family:Merriweather, serif;font-size:1.35rem;font-weight:700;margin-bottom:6px}
+.subtitle{color:var(--muted);margin-bottom:8px;font-size:1rem}
 
-/* Text */
-.h2{font-size:1.1rem;margin-bottom:8px;font-weight:700}
-.small{color:var(--muted);font-size:0.95rem;margin-bottom:12px}
-.p-justify{font-size:0.97rem;line-height:1.6;color:var(--text);text-align:justify;margin-bottom:6px}
+/* heading, text */
+.h2{font-size:1.02rem;margin:0 0 10px;font-weight:700}
+.small{color:var(--muted);margin-bottom:12px;font-size:0.98rem}
+.p-justify{font-size:0.98rem;line-height:1.6;color:var(--text);text-align:justify;margin:0 0 6px}
+.bold{font-weight:700;color:#222}
 
-/* Experience */
-.exp-row{padding:14px 0;border-top:1px solid #eee}
-.exp-left{font-weight:700;color:#2f2e2d;margin-bottom:5px}
-.exp-right{color:var(--muted);font-size:0.95rem;text-align:justify}
+/* Experience grid layout */
+.exp-table{margin-top:6px;border-top:1px solid var(--soft-border)}
+.exp-row{display:grid;grid-template-columns:1fr;gap:10px;padding:18px 0;border-bottom:1px solid var(--soft-border);align-items:start}
+.exp-left{font-weight:700;color:#2f2e2d;min-width:120px}
+.exp-right{color:var(--muted);font-size:0.96rem;line-height:1.58;text-align:justify}
+@media(min-width:900px){
+  .exp-row{grid-template-columns:var(--left-col) 1fr}
+}
 
 /* Education */
-.edu-item{border-top:1px solid #eee;padding:12px 0}
-.edu-left{font-weight:700;margin-bottom:5px}
-.edu-right{color:var(--muted);font-size:0.95rem;text-align:justify}
+.edu-item{display:grid;grid-template-columns:1fr;gap:8px;padding:14px 0;border-top:1px solid var(--soft-border)}
+.edu-left{font-weight:700;color:#2f2e2d}
+.edu-right{color:var(--muted);font-size:0.96rem;text-align:justify}
+@media(min-width:900px){ .edu-item{grid-template-columns:160px 1fr} }
 
 /* Accomplishments */
-.accomp-item{border-top:1px solid #eee;padding:10px 0}
-.accomp-item h4{margin-bottom:6px;font-weight:700}
-.accomp-item p{color:var(--muted);font-size:0.95rem;text-align:justify}
+.accomp-item{padding:14px 0;border-top:1px solid var(--soft-border)}
+.accomp-item h4{margin:0;font-weight:700;font-size:1rem}
+.accomp-item p{margin:8px 0 0 0;color:var(--muted);font-size:0.95rem;line-height:1.55;text-align:justify}
 
-/* Contact */
+/* Contact form */
 form{display:flex;flex-direction:column;gap:12px}
-.input-row{display:flex;gap:10px;flex-wrap:wrap}
-input,textarea{padding:12px;border:1px solid #eee;border-radius:10px;font-size:0.95rem;background:#fff}
-input:focus,textarea:focus{border-color:#e1b54b;outline:none;box-shadow:0 0 0 3px rgba(225,181,75,0.2)}
-textarea{min-height:100px;resize:vertical}
-.btn{background:var(--accent);border:none;padding:12px 20px;font-weight:700;border-radius:12px;cursor:pointer}
-.btn:hover{opacity:0.9}
+.input-row{display:flex;gap:12px}
+input,textarea{padding:12px;border-radius:12px;border:1px solid #eee;font-size:0.98rem;background:#fff;outline:none}
+input:focus,textarea:focus{box-shadow:0 12px 30px rgba(18,18,20,0.06);border-color:rgba(0,0,0,0.06)}
+textarea{min-height:120px;resize:vertical}
+.form-actions{display:flex;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#000;padding:12px 18px;border-radius:12px;font-weight:800;border:none;cursor:pointer}
+.btn-ghost{background:#f4f2ef;color:#2b2a29;border-radius:12px;padding:11px 16px}
 
-/* Footer */
-.footer{margin-top:20px;text-align:center;color:var(--muted);font-size:0.9rem}
-.contact-line{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;color:var(--muted)}
-.contact-line svg{width:18px;height:18px;fill:#3b3a39}
-.link-blue{color:#1b6fff;text-decoration:underline;word-break:break-all}
+/* Footer contact block */
+.footer{display:flex;flex-direction:column;gap:8px}
+.contact-line{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:0.98rem}
+.contact-line svg{flex:0 0 18px}
+.footer-legal{color:var(--muted);font-size:0.92rem;margin-top:8px}
+
+/* Floating 3-dot quick action - redesigned to match your image */
+.fab-wrap{position:fixed;right:18px;bottom:18px;z-index:999;display:flex;flex-direction:column;align-items:center;gap:18px}
+.fab-big{width:var(--fab-size);height:var(--fab-size);border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 26px 60px rgba(14,20,45,0.12);cursor:pointer;position:relative}
+.fab-big svg{width:34px;height:34px}
+.fab-phone{background:#2ecc71}
+.fab-mail{background:#c41b6a}
+.fab-close{background:#0ea5ff}
+
+/* Label boxes on the left */
+.fab-label{position:absolute;right:calc(var(--fab-size) + 18px);transform:translateX(6px);display:flex;align-items:center;justify-content:center;background:#fff;padding:14px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(18,18,20,0.06);font-weight:600;color:#222;font-size:1.05rem;min-width:110px}
+.fab-label::before{content:'';position:absolute;left:-10px;top:50%;transform:translateY(-50%);width:18px;height:18px;background:transparent}
+
+/* hide label initially on large screens but show on mobile; we want same look as screenshot */
+@media(min-width:680px){ .fab-label{display:none} }
+@media(max-width:679px){ .fab-big{width:68px;height:68px}.fab-label{display:flex;right:calc(var(--fab-size) + 12px)} }
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(14px) scale(.997);transition:all .6s cubic-bezier(.2,.9,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* small link styling for blue links */
+.link-blue{color:#1b66d2;text-decoration:underline;word-break:break-all}
+
+/* responsive tweaks */
+@media(max-width:760px){
+  .nav{display:none}
+  .profile-img{width:96px;height:96px}
+  .card{padding:16px}
+  .input-row{flex-direction:column}
+  .exp-left{font-size:0.98rem}
+}
 </style>
 </head>
-
 <body>
 
-<header class="header">
-  <div class="header-inner nav">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#accomplishments">Accomplishments</a>
-    <a href="#contact">Contact</a>
+<header class="header" role="banner">
+  <div class="header-inner" aria-hidden="false">
+    <nav class="nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#accomplishments">Accomplishments</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
-<main class="container">
+<main class="container" id="top" role="main">
 
-  <!-- Profile -->
-  <section class="card" id="profile">
+  <!-- PROFILE card: only name & subtitle (no phone/email at top) -->
+  <section id="profile" class="card reveal" aria-labelledby="profileName">
     <div class="profile">
       <img src="profile.jpg" alt="CH. Vishwa Sai" class="profile-img" onerror="this.style.display='none'">
-      <div>
-        <div class="title">CH. Vishwa Sai</div>
-        <div class="subtitle">B.Tech CSE (AI & ML) — Aspiring Software Developer</div>
+      <div style="flex:1">
+        <div id="profileName" class="title">CH. Vishwa Sai</div>
+        <div class="subtitle">B.Tech CSE (AI &amp; ML) — Aspiring Software Developer</div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="card" id="about">
-    <h2 class="h2">About</h2>
+  <!-- ABOUT: professional third-person, does not start with I/me/my -->
+  <section id="about" class="card reveal" aria-labelledby="about-title">
+    <h2 id="about-title" class="h2">About</h2>
     <div class="small">Skills and Expertise</div>
     <p class="p-justify">
-      Academic foundation in C programming, Python, Java, Salesforce Trailhead, and Data Structures supports expertise in software development and algorithmic problem-solving. Adept at converting theoretical knowledge into practical applications through projects and continuous learning. Committed to collaboration, innovation, and designing solutions that contribute to impactful technological progress.
+Academic focus on C programming, Python, Java, Salesforce Trailhead, and Data Structures provides a strong foundation in software development and logical problem-solving. Experience includes transforming technical concepts into practical solutions via hands-on projects and continuous learning. Driven by a commitment to growth and collaboration, this profile embraces challenges that require critical thinking and contribute to innovative projects within computer science and related fields.
     </p>
   </section>
 
-  <!-- Experience -->
-  <section class="card" id="experience">
-    <h2 class="h2">Experience</h2>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="card reveal" aria-labelledby="exp-heading">
+    <h2 id="exp-heading" class="h2">Experience</h2>
 
-    <div class="exp-row">
-      <div class="exp-left">Immersive Technologies (IR/VR/XR)</div>
-      <div class="exp-right">Developed a plane hangar simulation integrating IR, VR, and XR concepts. Designed realistic 3D environments and enhanced user immersion through spatial visualization and real-time interaction.</div>
-    </div>
+    <div class="exp-table" role="list">
+      <article class="exp-row" aria-labelledby="exp1">
+        <div class="exp-left" id="exp1">Immersive Technologies (IR/VR/XR)</div>
+        <div class="exp-right">Acquired practical experience in immersive technology development through the creation of a plane hangar simulation project, integrating IR, VR, and XR concepts. Focused on designing realistic 3D environments, implementing interactive object behavior, and enhancing user immersion through spatial visualization and real-time control systems.</div>
+      </article>
 
-    <div class="exp-row">
-      <div class="exp-left">Industry Interaction — Fire Safety Officers</div>
-      <div class="exp-right">Engaged with professionals to understand safety protocols, risk management, and emergency response practices, gaining practical exposure to workplace safety standards.</div>
-    </div>
+      <article class="exp-row" aria-labelledby="exp2">
+        <div class="exp-left" id="exp2">Industry Interaction — Fire Safety Officers</div>
+        <div class="exp-right">Engaged in sessions with Fire Safety Officers to understand essential safety protocols, risk management practices, and emergency response techniques. Gained practical insights into workplace safety standards and the importance of preventive measures in real-life scenarios.</div>
+      </article>
 
-    <div class="exp-row">
-      <div class="exp-left">Public Speaking & Presentation Skills</div>
-      <div class="exp-right">Delivered PowerPoint presentations on technical topics, strengthening communication and presentation clarity while improving confidence in public forums.</div>
-    </div>
+      <article class="exp-row" aria-labelledby="exp3">
+        <div class="exp-left" id="exp3">Public Speaking &amp; Presentation Skills</div>
+        <div class="exp-right">Experience preparing and delivering PowerPoint presentations on technical and academic topics. Developed communication, organization, and time-management skills while presenting ideas clearly and confidently before audiences.</div>
+      </article>
 
-    <div class="exp-row">
-      <div class="exp-left">MS Office Proficiency</div>
-      <div class="exp-right">Proficient with Word, Excel, and PowerPoint — capable of producing structured reports, managing spreadsheets, and delivering effective slideshows.</div>
-    </div>
+      <article class="exp-row" aria-labelledby="exp4">
+        <div class="exp-left" id="exp4">MS Office Proficiency</div>
+        <div class="exp-right">Practical use of Microsoft Office tools such as Word, Excel, and PowerPoint — creating and editing documents, preparing presentation slides, and managing basic data in spreadsheets.</div>
+      </article>
 
-    <div class="exp-row">
-      <div class="exp-left">Problem Solving</div>
-      <div class="exp-right">Active on LeetCode to enhance analytical and coding efficiency. Profile: <a href="https://leetcode.com/B24AI134/" class="link-blue" target="_blank">https://leetcode.com/B24AI134/</a></div>
-    </div>
+      <article class="exp-row" aria-labelledby="exp5">
+        <div class="exp-left" id="exp5">Problem Solving</div>
+        <div class="exp-right">Regular engagement with algorithmic practice on LeetCode to strengthen problem-solving skills. Profile: <a class="link-blue" href="https://leetcode.com/B24AI134/" target="_blank" rel="noopener noreferrer">https://leetcode.com/B24AI134/</a></div>
+      </article>
 
-    <div class="exp-row">
-      <div class="exp-left">Salesforce Trailhead</div>
-      <div class="exp-right">Continuous learning on Salesforce Trailhead — focusing on CRM, cloud automation, and process workflows. Profile: <a href="https://trailblazer.me/id/fb08nyrj9d7hz2x9ew" class="link-blue" target="_blank">https://trailblazer.me/id/fb08nyrj9d7hz2x9ew</a></div>
+      <article class="exp-row" aria-labelledby="exp6">
+        <div class="exp-left" id="exp6">Salesforce Trailhead</div>
+        <div class="exp-right">Continuous learning through Salesforce Trailhead. Profile: <a class="link-blue" href="https://trailblazer.me/id/fb08nyrj9d7hz2x9ew" target="_blank" rel="noopener noreferrer">https://trailblazer.me/id/fb08nyrj9d7hz2x9ew</a></div>
+      </article>
     </div>
   </section>
 
-  <!-- Education -->
-  <section class="card" id="education">
-    <h2 class="h2">Education</h2>
+  <!-- EDUCATION -->
+  <section id="education" class="card reveal" aria-labelledby="edu-heading">
+    <h2 id="edu-heading" class="h2">Education</h2>
 
     <div class="edu-item">
       <div class="edu-left">B.Tech</div>
-      <div class="edu-right"><strong>Computer Science and Engineering (AI & ML)</strong><br>Kakatiya Institute of Technology and Science, Warangal — <strong>Year of Study: 2024 – 2028</strong></div>
+      <div class="edu-right"><strong>Computer Science and Engineering (AI &amp; ML)</strong><br>Kakatiya Institute of Technology and Science, Warangal — Year of Study: <strong>2024 – 2028</strong></div>
     </div>
 
     <div class="edu-item">
       <div class="edu-left">Intermediate (Class XII)</div>
-      <div class="edu-right">Lal Bahadur College, Warangal — <strong>Year of Completion: 2023</strong></div>
+      <div class="edu-right">Lal Bahadur College, Warangal — Year of Completion: <strong>2023</strong></div>
     </div>
 
     <div class="edu-item">
       <div class="edu-left">Secondary (Class X)</div>
-      <div class="edu-right">Govt High School Krishna Colony, Warangal — <strong>Year of Completion: 2022</strong></div>
+      <div class="edu-right">Govt High School Krishna Colony, Warangal — Year of Completion: <strong>2022</strong></div>
     </div>
   </section>
 
-  <!-- Accomplishments -->
-  <section class="card" id="accomplishments">
-    <h2 class="h2">Accomplishments</h2>
+  <!-- ACCOMPLISHMENTS -->
+  <section id="accomplishments" class="card reveal" aria-labelledby="accomp-heading">
+    <h2 id="accomp-heading" class="h2">Accomplishments</h2>
 
     <div class="accomp-item">
       <h4>XR Monk Certification</h4>
-      <p>October 2025 — Certified by XR Monk Company after completing a hands-on workshop on Immersive Reality (IR), Virtual Reality (VR), and Extended Reality (XR).</p>
+      <p>October 2025 — Certified by XR Monk Company for successfully completing a hands-on workshop on Immersive Reality (IR), Virtual Reality (VR), and Extended Reality (XR) technologies, gaining practical experience in 3D simulation and interactive environment design.</p>
     </div>
 
     <div class="accomp-item">
       <h4>PGDCA Certification</h4>
-      <p>Completed a Post Graduate Diploma in Computer Applications from Satyam Institute, covering computer fundamentals and programming tools.</p>
+      <p>Received a Post Graduate Diploma in Computer Applications (PGDCA) from Satyam Institute, demonstrating proficiency in computer fundamentals and programming concepts.</p>
     </div>
 
     <div class="accomp-item">
       <h4>Model United Nations (MUN) Participation</h4>
-      <p>March 2025 — Represented Romania as a delegate in the Human Rights Council (HRC), showcasing research, diplomacy, and leadership skills.</p>
+      <p>March 2025 — Received a certificate of participation for representing Romania as a delegate in the Human Rights Council (HRC) event; demonstrated strong research, diplomacy and public speaking skills.</p>
     </div>
 
     <div class="accomp-item">
       <h4>Academic Excellence</h4>
-      <p>December 2025 — Recipient of the Dean’s Award for academic distinction and contributions to technical innovation.</p>
+      <p>December 2025 — Recipient of the Dean's Award for exceptional academic performance and contributions to technology.</p>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="card" id="contact">
-    <h2 class="h2">Contact Me</h2>
+  <!-- CONTACT -->
+  <section id="contact" class="card reveal" aria-labelledby="contact-heading">
+    <h2 id="contact-heading" class="h2">Contact Me</h2>
     <div class="small">For collaboration opportunities, internships, or hackathons, feel free to reach out.</div>
 
-    <form action="https://formspree.io/f/mwpaeqek" method="POST">
+    <form id="contactForm" action="https://formspree.io/f/mwpaeqek" method="POST" aria-label="Contact form">
       <div class="input-row">
-        <input name="first" type="text" placeholder="First name*" required>
-        <input name="last" type="text" placeholder="Last name*" required>
+        <input id="first" name="first" type="text" placeholder="First name*" required>
+        <input id="last" name="last" type="text" placeholder="Last name*" required>
       </div>
 
-      <input name="phone" type="tel" placeholder="Mobile number*" required inputmode="tel" pattern="[0-9+()\-\s]*">
-      <input name="email" type="email" placeholder="Email*" required>
-      <textarea name="message" placeholder="Message - Give a detailed example" required></textarea>
+      <input id="phone" name="phone" type="tel" placeholder="Mobile number*" required inputmode="tel" pattern="[0-9+()\-\s]*">
+      <input id="email" name="email" type="email" placeholder="Email*" required>
+      <textarea id="message" name="message" placeholder="Message - Give a detailed example" required></textarea>
 
-      <!-- ✅ Redirect to thankyou.html -->
-      <input type="hidden" name="_next" value="https://vishwa1606-kits.github.io/thankyou.html">
-
-      <button class="btn" type="submit">Send</button>
+      <div class="form-actions">
+        <button class="btn" type="submit">Send</button>
+      </div>
     </form>
   </section>
 
-  <div class="footer">
-    <div class="contact-line">
-      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.82 19.82 0 0 1 3.09 4.18 2 2 0 0 1 5.11 2h3a2 2 0 0 1 2 1.72c.12 1.21.45 2.39.98 3.5a2 2 0 0 1-.45 2.11L9.91 11.09a16 16 0 0 0 6 6l1.76-1.76a2 2 0 0 1 2.11-.45c1.11.53 2.29.86 3.5.98A2 2 0 0 1 22 16.92z"/></svg>
-      <a href="tel:+917093884760">+91-7093884760</a>
+  <!-- Footer contact block -->
+  <section class="card reveal" aria-label="Footer contact">
+    <div class="footer">
+      <div style="font-weight:700;font-size:1rem">CH. Vishwa Sai</div>
+
+      <div class="contact-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.82 19.82 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.82 19.82 0 0 1 3.09 4.18 2 2 0 0 1 5.11 2h3a2 2 0 0 1 2 1.72c.12 1.21.45 2.39.98 3.5a2 2 0 0 1-.45 2.11L9.91 11.09a16 16 0 0 0 6 6l1.76-1.76a2 2 0 0 1 2.11-.45c1.11.53 2.29.86 3.5.98A2 2 0 0 1 22 16.92z" fill="#3b3a39"/>
+        </svg>
+        <a href="tel:+917093884760">+91-7093884760</a>
+      </div>
+
+      <div class="contact-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6l9 6 9-6" stroke="#3b3a39" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <a href="mailto:vishwasaichidarala@gmail.com">vishwasaichidarala@gmail.com</a>
+      </div>
+
+      <div class="footer-legal">© 2025 by CH. Vishwa Sai.</div>
     </div>
-    <div class="contact-line">
-      <svg viewBox="0 0 24 24"><path d="M3 6l9 6 9-6" stroke="#3b3a39" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <a href="mailto:vishwasaichidarala@gmail.com">vishwasaichidarala@gmail.com</a>
-    </div>
-    <p>© 2025 CH. Vishwa Sai</p>
-  </div>
+  </section>
 
 </main>
+
+<!-- Floating vertical action stack (big round icons + left label boxes on mobile) -->
+<div class="fab-wrap" aria-hidden="false">
+
+  <!-- PHONE -->
+  <a class="fab-big fab-phone" id="fabPhone" href="tel:+917093884760" title="Call">
+    <span class="fab-label" aria-hidden="true">Phone</span>
+    <!-- phone icon -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.82 19.82 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.82 19.82 0 0 1 3.09 4.18 2 2 0 0 1 5.11 2h3a2 2 0 0 1 2 1.72c.12 1.21.45 2.39.98 3.5a2 2 0 0 1-.45 2.11L9.91 11.09a16 16 0 0 0 6 6l1.76-1.76a2 2 0 0 1 2.11-.45c1.11.53 2.29.86 3.5.98A2 2 0 0 1 22 16.92z" fill="#fff"/>
+    </svg>
+  </a>
+
+  <!-- EMAIL -->
+  <a class="fab-big fab-mail" id="fabMail" href="mailto:vishwasaichidarala@gmail.com" title="Email">
+    <span class="fab-label" aria-hidden="true">Email</span>
+    <!-- email icon -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 6l9 6 9-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <!-- CLOSE (hide) -->
+  <button class="fab-big fab-close" id="fabClose" title="Hide">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+</div>
+
+<script>
+/* Reveal on scroll */
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+},{threshold:0.14});
+reveals.forEach(r=>io.observe(r));
+
+/* Formspree send UX */
+const form = document.getElementById('contactForm');
+if(form){
+  form.addEventListener('submit', async (ev)=>{
+    ev.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending…';
+    const data = new FormData(form);
+    try{
+      const r = await fetch(form.action, { method: 'POST', body: data, headers: {'Accept':'application/json'}});
+      if(r.ok){ btn.textContent = 'Sent ✓'; form.reset(); setTimeout(()=>{ btn.disabled=false; btn.textContent=originalText; },1400); }
+      else { throw new Error('submit failed'); }
+    }catch(err){
+      btn.disabled = false;
+      btn.textContent = originalText;
+      alert('Send failed. Please email directly: vishwasaichidarala@gmail.com');
+    }
+  });
+}
+
+/* Hide FABs on close */
+const fabClose = document.getElementById('fabClose');
+const fabWrap = document.querySelector('.fab-wrap');
+fabClose.addEventListener('click', ()=>{ fabWrap.style.display='none'; });
+
+/* Smooth nav scroll */
+document.querySelectorAll('.nav a').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const id = a.getAttribute('href');
+    const el = document.querySelector(id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
 </body>
 </html>
