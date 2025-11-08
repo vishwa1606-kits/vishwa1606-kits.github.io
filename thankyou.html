@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Thank You — CH. Vishwa Sai</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #fbf6f2;
+  --card: #fff;
+  --text: #121212;
+  --muted: #6d6a67;
+  --accent: #e1b54b;
+  --radius: 18px;
+  --shadow: 0 20px 40px rgba(18,18,20,0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.card {
+  background: var(--card);
+  padding: 40px 36px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 680px;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background: #f0eae4;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  animation: progressAnim 5s linear forwards;
+}
+
+a.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+a.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progressAnim {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+  <main class="card" role="main" aria-live="polite">
+    <h1>✅ Message Sent Successfully</h1>
+    <p>Thank you for reaching out!  
+       Your message has been received — I’ll respond shortly.  
+       You’ll be redirected to my portfolio automatically.</p>
+
+    <div class="progress"><div class="progress-bar"></div></div>
+
+    <a class="btn" href="index.html">Return Now</a>
+
+    <footer>© 2025 CH. Vishwa Sai</footer>
+  </main>
+
+<script>
+  // Automatically redirect back after 5 seconds
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 5000);
+</script>
+</body>
+</html>
