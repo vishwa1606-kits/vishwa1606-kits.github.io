@@ -20,7 +20,6 @@
   --shadow: 0 20px 40px rgba(18,18,20,0.06);
   --max-width:980px;
   --left-col:150px;
-  --fab-size:74px;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--text);background:var(--page-bg);-webkit-font-smoothing:antialiased}
@@ -81,21 +80,7 @@ textarea{min-height:120px;resize:vertical}
 .contact-line svg{flex:0 0 18px}
 .footer-legal{color:var(--muted);font-size:0.92rem;margin-top:8px}
 
-/* Floating 3-dot quick action - redesigned to match your image */
-.fab-wrap{position:fixed;right:18px;bottom:18px;z-index:999;display:flex;flex-direction:column;align-items:center;gap:18px}
-.fab-big{width:var(--fab-size);height:var(--fab-size);border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 26px 60px rgba(14,20,45,0.12);cursor:pointer;position:relative}
-.fab-big svg{width:34px;height:34px}
-.fab-phone{background:#2ecc71}
-.fab-mail{background:#c41b6a}
-.fab-close{background:#0ea5ff}
-
-/* Label boxes on the left */
-.fab-label{position:absolute;right:calc(var(--fab-size) + 18px);transform:translateX(6px);display:flex;align-items:center;justify-content:center;background:#fff;padding:14px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(18,18,20,0.06);font-weight:600;color:#222;font-size:1.05rem;min-width:110px}
-.fab-label::before{content:'';position:absolute;left:-10px;top:50%;transform:translateY(-50%);width:18px;height:18px;background:transparent}
-
-/* hide label initially on large screens but show on mobile; we want same look as screenshot */
-@media(min-width:680px){ .fab-label{display:none} }
-@media(max-width:679px){ .fab-big{width:68px;height:68px}.fab-label{display:flex;right:calc(var(--fab-size) + 12px)} }
+/* remove floating popup styles: nothing here for fab anymore */
 
 /* reveal animation */
 .reveal{opacity:0;transform:translateY(14px) scale(.997);transition:all .6s cubic-bezier(.2,.9,.3,1)}
@@ -278,34 +263,6 @@ Academic focus on C programming, Python, Java, Salesforce Trailhead, and Data St
 
 </main>
 
-<!-- Floating vertical action stack (big round icons + left label boxes on mobile) -->
-<div class="fab-wrap" aria-hidden="false">
-
-  <!-- PHONE -->
-  <a class="fab-big fab-phone" id="fabPhone" href="tel:+917093884760" title="Call">
-    <span class="fab-label" aria-hidden="true">Phone</span>
-    <!-- phone icon -->
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.82 19.82 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.82 19.82 0 0 1 3.09 4.18 2 2 0 0 1 5.11 2h3a2 2 0 0 1 2 1.72c.12 1.21.45 2.39.98 3.5a2 2 0 0 1-.45 2.11L9.91 11.09a16 16 0 0 0 6 6l1.76-1.76a2 2 0 0 1 2.11-.45c1.11.53 2.29.86 3.5.98A2 2 0 0 1 22 16.92z" fill="#fff"/>
-    </svg>
-  </a>
-
-  <!-- EMAIL -->
-  <a class="fab-big fab-mail" id="fabMail" href="mailto:vishwasaichidarala@gmail.com" title="Email">
-    <span class="fab-label" aria-hidden="true">Email</span>
-    <!-- email icon -->
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M3 6l9 6 9-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </a>
-
-  <!-- CLOSE (hide) -->
-  <button class="fab-big fab-close" id="fabClose" title="Hide">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-
-</div>
-
 <script>
 /* Reveal on scroll */
 const reveals = document.querySelectorAll('.reveal');
@@ -337,11 +294,6 @@ if(form){
     }
   });
 }
-
-/* Hide FABs on close */
-const fabClose = document.getElementById('fabClose');
-const fabWrap = document.querySelector('.fab-wrap');
-fabClose.addEventListener('click', ()=>{ fabWrap.style.display='none'; });
 
 /* Smooth nav scroll */
 document.querySelectorAll('.nav a').forEach(a=>{
